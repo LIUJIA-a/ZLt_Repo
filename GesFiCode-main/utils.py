@@ -164,6 +164,43 @@ def accuracy(network, loader, weights, usedpredict='p'):
     return correct / total
 
 
+def save_confusion_and_perclass(network, loader, log_dir, num_classes):
+    """在测试集上收集预测，保存混淆矩阵(.npy/.csv)与逐类精度(.csv)。
+    回应 R1(对向手势混淆) / R3-5(per-class 分析)。"""
+    import csv
+    network.eval()
+    all_y, all_p = [], []
+    with torch.no_grad():
+        for inputs, labels, pdlables, item in loader:
+            x = inputs.cuda().float()
+            p = network.predict(x).argmax(1).cpu().numpy()
+            all_p.extend(p.tolist())
+            all_y.extend(labels.numpy().tolist())
+    network.train()
+    y = np.array(all_y); pr = np.array(all_p)
+    cm = confusion_matrix(y, pr, labels=list(range(num_classes)))
+    np.save(os.path.join(log_dir, "confusion_matrix.npy"), cm)
+    # 行归一化 recall
+    with np.errstate(all='ignore'):
+        cm_norm = cm / cm.sum(axis=1, keepdims=True)
+        cm_norm = np.nan_to_num(cm_norm)
+    # 保存 csv
+    with open(os.path.join(log_dir, "confusion_matrix.csv"), "w", newline="") as fcsv:
+        w = csv.writer(fcsv)
+        w.writerow(["true\\pred"] + list(range(num_classes)))
+        for i in range(num_classes):
+            w.writerow([i] + cm[i].tolist())
+    with open(os.path.join(log_dir, "per_class_acc.csv"), "w", newline="") as fcsv:
+        w = csv.writer(fcsv)
+        w.writerow(["class", "n", "recall"])
+        for i in range(num_classes):
+            n = int(cm[i].sum())
+            rec = float(cm_norm[i, i]) if n > 0 else 0.0
+            w.writerow([i, n, f"{rec:.4f}"])
+    print(f"[ConfMatrix] saved to {log_dir} (cm shape={cm.shape})")
+    return cm
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 # Widar 数据集构建器
 # ═══════════════════════════════════════════════════════════════════════════
@@ -414,10 +451,17 @@ def trainer(trainmodel, img_transform, img_transformte, device, opta, scheduler,
             dataset_target = TransformSubset(test_sub, img_transformte)
             dataset_source_eval = TransformSubset(train_sub, img_transformte)
         else:
-            # cross_user: Scene1, U01-24 train, U25-30 test
+            # cross_user: Scene1
+            # 支持 LOUO: --xrf_test_users 5 表示 user5 做测试,其余训练
             scene1_dir = data_path if 'Scene' in data_path else os.path.join(data_path, 'Processed_Data_Scene_1')
-            train_users = set(range(1, 25))
-            test_users = set(range(25, 31))
+            xrf_test_u = getattr(args, 'xrf_test_users', None)
+            if xrf_test_u is not None:
+                test_users = {int(xrf_test_u)}
+                train_users = set(range(1, 31)) - test_users
+                print(f'[XRF55 LOUO] test_user={xrf_test_u}, train_users={sorted(train_users)[:3]}...({len(train_users)}人)')
+            else:
+                train_users = set(range(1, 25))
+                test_users = set(range(25, 31))
             dataset_source = XRF55Dataset([scene1_dir], transform=img_transform, allowed_users=train_users)
             dataset_target = XRF55Dataset([scene1_dir], transform=img_transformte, allowed_users=test_users)
             dataset_source_eval = XRF55Dataset([scene1_dir], transform=img_transformte, allowed_users=train_users)
@@ -469,15 +513,19 @@ def trainer(trainmodel, img_transform, img_transformte, device, opta, scheduler,
     print(f'Source eval size: {len(dataset_source_eval)} samples')
 
     # ── Direction sensitivity (manual specification) ────────────────────
-    # XRF55: class 0=circle(agnostic), classes 1-7=directional(sensitive)
-    # Widar: class 0=Push&Pull(merged, agnostic), all others agnostic
+    # Widar: 手势为方向合并类别(Push&Pull合一), 方向解耦不适用, 权重全0
+    # XRF55: 基于物理方向语义的先验权重
+    #   G44-G49 (push/pull/swipeL/R/U/D) = 方向敏感 → w=0.5
+    #   G50-G51 (circle/cross) = 方向无关 → w=0.0
+    dir_w = getattr(args, 'dir_weight', 0.5) if args else 0.5
     if args.dataset == 'widar':
         direction_sensitive = {i: 0.0 for i in range(6)}
+        print(f'\n[Direction Sensitivity] Widar: all agnostic (merged gestures)')
     else:
-        direction_sensitive = {0: 0.0}
-        for i in range(1, 8):
-            direction_sensitive[i] = 0.5
-    print(f'\n[Direction Sensitivity] Manual weights: {direction_sensitive}')
+        direction_sensitive = {i: dir_w for i in range(6)}  # class 0-5: push/pull/swipe → sensitive
+        direction_sensitive[6] = 0.0  # class 6: circle → agnostic
+        direction_sensitive[7] = 0.0  # class 7: cross → agnostic
+        print(f'\n[Direction Sensitivity] Physics-informed: classes 0-5 (directional)={dir_w}, classes 6-7 (agnostic)=0.0')
 
     # ── 物理增强实例化 ────────────────────────────────────────────────────────
     var_pct = args.variance_percentile if args else 30
@@ -634,6 +682,12 @@ def trainer(trainmodel, img_transform, img_transformte, device, opta, scheduler,
 
     with open(bestacc_file, "w") as f:
         f.write(f"{bestac:.6f}\n")
+
+    # ── 训练结束：保存混淆矩阵 + per-class 精度（最终模型）──────────────────
+    try:
+        save_confusion_and_perclass(trainmodel, test_loader, log_dir, num_classes)
+    except Exception as e:
+        print(f"[ConfMatrix] skipped due to error: {e}")
 
     print(f"\nResults saved to {log_dir}")
     print(f"acc.txt: {acc_file}")

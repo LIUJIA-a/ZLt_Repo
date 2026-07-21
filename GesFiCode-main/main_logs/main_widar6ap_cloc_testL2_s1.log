@@ -1,0 +1,766 @@
+[Seed] global random seed set to 1
+
+[Ablation Mode] full
+[WidarDataset] loaded 5400 samples, gesture_map={'G01': 0, 'G02': 1, 'G03': 2, 'G04': 3, 'G05': 4, 'G06': 5}
+[WidarDataset] loaded 1350 samples, gesture_map={'G01': 0, 'G02': 1, 'G03': 2, 'G04': 3, 'G05': 4, 'G06': 5}
+[WidarDataset] loaded 5400 samples, gesture_map={'G01': 0, 'G02': 1, 'G03': 2, 'G04': 3, 'G05': 4, 'G06': 5}
+Train set size: 5400 samples, 169 batches
+Test set size:  1350 samples, 43 batches
+Source eval size: 5400 samples
+
+[Direction Sensitivity] Manual weights (dir_w=0.5): {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0}
+
+======== ROUND 0 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss         supcon_loss     
+0                3.5179159641     0.5304362774     5.9749593735    
+1                3.0948162079     0.2503654957     5.6889014244    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                2.2650427818     1.9650427103     0.0000000000     0.3000000119    
+Counter({np.int64(1): 2485, np.int64(2): 2164, np.int64(0): 751})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.9133047462     0.3755199909     0.4651872516     0.1451950520    
+  Source acc: 0.856111  |  Target acc: 0.741481
+  Best target acc: 0.741481
+
+======== ROUND 1 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss         supcon_loss     
+0                3.0594565868     0.3054836690     5.5079460144    
+1                3.2728798389     0.6461144090     5.2535309792    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.5900213718     1.1491698027     0.8050355911     0.0383337252    
+Counter({np.int64(2): 2218, np.int64(1): 2024, np.int64(0): 1158})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.1461086273     0.2811487019     0.7291922569     0.2715354860    
+  Source acc: 0.982222  |  Target acc: 0.911111
+  Best target acc: 0.911111
+
+======== ROUND 2 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss         supcon_loss     
+0                2.8645026684     0.5955858231     4.5378336906    
+1                2.4258425236     0.2639131248     4.3238587379    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1052305698     1.0578323603     0.0756319538     0.0095823081    
+Counter({np.int64(0): 2290, np.int64(1): 1581, np.int64(2): 1529})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.8848320842     0.2146614045     0.5248242617     0.2906928360    
+  Source acc: 0.989444  |  Target acc: 0.904444
+  Best target acc: 0.911111
+
+======== ROUND 3 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.1141228154     0.1141228154    
+1                0.0418787189     0.0418787189    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.5270686150     1.2578955889     0.5354940891     0.0014259706    
+Counter({np.int64(0): 2320, np.int64(1): 1826, np.int64(2): 1254})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.4989044666     0.1637296528     1.2234891653     0.2233711481    
+  Source acc: 0.984444  |  Target acc: 0.889630
+  Best target acc: 0.911111
+
+======== ROUND 4 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0597057939     0.0597057939    
+1                0.2773750722     0.2773750722    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.8470175266     1.5409945250     0.6030801535     0.0044829613    
+Counter({np.int64(0): 3131, np.int64(2): 1348, np.int64(1): 921})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.0228857994     0.1579254866     0.6852337122     0.3594531417    
+  Source acc: 0.985000  |  Target acc: 0.916296
+  Best target acc: 0.916296
+
+======== ROUND 5 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.3821857870     0.3821857870    
+1                0.0458485000     0.0458485000    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.3193172216     1.0596963167     0.3873059154     0.0659678802    
+Counter({np.int64(0): 2455, np.int64(1): 1545, np.int64(2): 1400})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.2394430637     0.3878585398     0.7555938959     0.1919812262    
+  Source acc: 0.981852  |  Target acc: 0.894074
+  Best target acc: 0.916296
+
+======== ROUND 6 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0384496711     0.0384496711    
+1                0.0589474440     0.0589474440    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.7376630306     1.4683622122     0.4406026006     0.0489995815    
+Counter({np.int64(2): 2710, np.int64(0): 1649, np.int64(1): 1041})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.7963263988     0.0269366261     0.6401782036     0.2584231496    
+  Source acc: 0.995370  |  Target acc: 0.942222
+  Best target acc: 0.942222
+
+======== ROUND 7 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0966341570     0.0966341570    
+1                0.1002995148     0.1002995148    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.4328440428     1.1979030371     0.4314180017     0.0192320347    
+Counter({np.int64(0): 3296, np.int64(2): 1296, np.int64(1): 808})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.0420430899     0.0685013309     0.8633539081     0.2203756869    
+  Source acc: 0.991296  |  Target acc: 0.925926
+  Best target acc: 0.942222
+
+======== ROUND 8 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0120107951     0.0120107951    
+1                0.0093979537     0.0093979537    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.4509384632     1.0837559700     0.6024292111     0.0659678802    
+Counter({np.int64(0): 2519, np.int64(2): 1655, np.int64(1): 1226})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.6839489937     0.0467251725     0.5388805866     0.1966864765    
+  Source acc: 0.980556  |  Target acc: 0.921481
+  Best target acc: 0.942222
+
+======== ROUND 9 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0145767555     0.0145767555    
+1                0.1557532996     0.1557532996    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.9510264397     1.5478185415     0.7849917412     0.0107119847    
+Counter({np.int64(0): 2200, np.int64(2): 1772, np.int64(1): 1428})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.6293795109     0.0158536360     0.5210778713     0.1848960519    
+  Source acc: 0.997963  |  Target acc: 0.952593
+  Best target acc: 0.952593
+
+======== ROUND 10 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0584097207     0.0584097207    
+1                0.0380586721     0.0380586721    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1053426266     0.6675278544     0.8564648628     0.0095823081    
+Counter({np.int64(0): 2283, np.int64(2): 2100, np.int64(1): 1017})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4680882096     0.0217534304     0.3519789577     0.1887116730    
+  Source acc: 0.999630  |  Target acc: 0.969630
+  Best target acc: 0.969630
+
+======== ROUND 11 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0011787917     0.0011787917    
+1                0.0831923038     0.0831923038    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.7895812392     0.5293376446     0.2971464097     0.1116703525    
+Counter({np.int64(0): 2385, np.int64(2): 1938, np.int64(1): 1077})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.5324788690     0.0576104224     0.3904946744     0.1687475145    
+  Source acc: 0.999630  |  Target acc: 0.965185
+  Best target acc: 0.969630
+
+======== ROUND 12 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0041747144     0.0041747144    
+1                0.0071437615     0.0071437615    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.4685353935     0.4137470722     0.0833396316     0.0131185073    
+Counter({np.int64(0): 2717, np.int64(2): 2121, np.int64(1): 562})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.5004542470     0.0329919271     0.4082556963     0.1184132695    
+  Source acc: 0.999630  |  Target acc: 0.960741
+  Best target acc: 0.969630
+
+======== ROUND 13 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0050544557     0.0050544557    
+1                0.0095208855     0.0095208855    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.6343601346     0.5103245974     0.1888078898     0.0296316408    
+Counter({np.int64(2): 2376, np.int64(0): 2207, np.int64(1): 817})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.8064635396     0.0747404248     0.6305837035     0.2022788227    
+  Source acc: 0.999630  |  Target acc: 0.965926
+  Best target acc: 0.969630
+
+======== ROUND 14 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0324651934     0.0324651934    
+1                0.0003945330     0.0003945330    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.7232024670     0.5785644650     0.2533023357     0.0179868266    
+Counter({np.int64(2): 2555, np.int64(0): 2443, np.int64(1): 402})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4243887365     0.0328761898     0.3350986838     0.1128277034    
+  Source acc: 0.999815  |  Target acc: 0.973333
+  Best target acc: 0.973333
+
+======== ROUND 15 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0122492248     0.0122492248    
+1                0.0775150061     0.0775150061    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.3032429218     1.1485310793     0.2047675550     0.0523280613    
+Counter({np.int64(2): 2458, np.int64(0): 2400, np.int64(1): 542})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.8310275078     0.0196611900     0.7565595508     0.1096135601    
+  Source acc: 0.999815  |  Target acc: 0.976296
+  Best target acc: 0.976296
+
+======== ROUND 16 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0144358901     0.0144358901    
+1                0.0176481400     0.0176481400    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1448357105     0.9857277870     0.2919787765     0.0131185073    
+Counter({np.int64(2): 2575, np.int64(0): 2403, np.int64(1): 422})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4558586776     0.0529695898     0.3247484863     0.1562811732    
+  Source acc: 0.999815  |  Target acc: 0.973333
+  Best target acc: 0.976296
+
+======== ROUND 17 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0018732781     0.0018732781    
+1                0.0086917989     0.0086917989    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.8330858946     0.7122449875     0.0985664651     0.0715576857    
+Counter({np.int64(2): 2598, np.int64(0): 2308, np.int64(1): 494})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.9016731381     0.0205590781     0.7584252357     0.2453776300    
+  Source acc: 1.000000  |  Target acc: 0.973333
+  Best target acc: 0.976296
+
+======== ROUND 18 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0009665322     0.0009665322    
+1                0.0020673389     0.0020673389    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.6128668189     0.4694176018     0.0635576993     0.1116703525    
+Counter({np.int64(2): 2579, np.int64(0): 2529, np.int64(1): 292})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.5118966699     0.0417221971     0.3967214525     0.1469060034    
+  Source acc: 1.000000  |  Target acc: 0.977037
+  Best target acc: 0.977037
+
+======== ROUND 19 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0045227576     0.0045227576    
+1                0.0042076344     0.0042076344    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.9824602604     0.7919487953     0.2763668001     0.0523280613    
+Counter({np.int64(0): 2721, np.int64(1): 1801, np.int64(2): 878})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.1404381990     0.0269986037     1.0592315197     0.1084161252    
+  Source acc: 1.000000  |  Target acc: 0.971852
+  Best target acc: 0.977037
+
+======== ROUND 20 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0210314523     0.0210314523    
+1                0.0031569542     0.0031569542    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.7751702666     0.6881638169     0.0588214770     0.0575957373    
+Counter({np.int64(2): 2585, np.int64(0): 2451, np.int64(1): 364})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.5022993088     0.0070348098     0.4507579803     0.0890130624    
+  Source acc: 1.000000  |  Target acc: 0.973333
+  Best target acc: 0.977037
+
+======== ROUND 21 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0013876393     0.0013876393    
+1                0.0013689360     0.0013689360    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.3504209518     0.9065850377     0.6353000998     0.1261859536    
+Counter({np.int64(0): 2586, np.int64(2): 2573, np.int64(1): 241})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.7052584887     0.0222934168     0.6391370296     0.0876561254    
+  Source acc: 1.000000  |  Target acc: 0.978519
+  Best target acc: 0.978519
+
+======== ROUND 22 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0014358509     0.0014358509    
+1                0.0010168902     0.0010168902    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.7628152370     0.6079818010     0.1545796990     0.0775436014    
+Counter({np.int64(0): 2699, np.int64(2): 2568, np.int64(1): 133})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.6833049655     0.0121952295     0.6042654514     0.1336885989    
+  Source acc: 1.000000  |  Target acc: 0.976296
+  Best target acc: 0.978519
+
+======== ROUND 23 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0012667218     0.0012667218    
+1                0.0343461372     0.0343461372    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.8875238895     0.7250139117     0.1035778373     0.1107210815    
+Counter({np.int64(0): 2717, np.int64(2): 2539, np.int64(1): 144})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.1154459715     0.0312941000     0.9946069121     0.1790900528    
+  Source acc: 1.000000  |  Target acc: 0.974074
+  Best target acc: 0.978519
+
+======== ROUND 24 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0193372555     0.0193372555    
+1                0.0650380030     0.0650380030    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.8648278117     0.7344500422     0.0316925049     0.1145315021    
+Counter({np.int64(0): 2739, np.int64(2): 2236, np.int64(1): 425})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.9000155926     0.0155728729     0.8237578273     0.1213698611    
+  Source acc: 1.000000  |  Target acc: 0.977037
+  Best target acc: 0.978519
+
+======== ROUND 25 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0057841814     0.0057841814    
+1                0.0149183599     0.0149183599    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.9382355213     0.7909584045     0.1474686563     0.0735427514    
+Counter({np.int64(0): 2732, np.int64(1): 1656, np.int64(2): 1012})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.8353478312     0.0126062855     0.7523138523     0.1408554316    
+  Source acc: 1.000000  |  Target acc: 0.971111
+  Best target acc: 0.978519
+
+======== ROUND 26 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0431373976     0.0431373976    
+1                0.0006536234     0.0006536234    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.6759598255     0.5976819396     0.1303188205     0.0131185073    
+Counter({np.int64(0): 2708, np.int64(2): 2567, np.int64(1): 125})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.3939240575     0.0047649965     0.3188292682     0.1406595409    
+  Source acc: 1.000000  |  Target acc: 0.974815
+  Best target acc: 0.978519
+
+======== ROUND 27 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0021426997     0.0021426997    
+1                0.0030315283     0.0030315283    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.0023349524     0.8134997487     0.2345549762     0.0715576857    
+Counter({np.int64(0): 2732, np.int64(1): 1438, np.int64(2): 1230})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.6934953928     0.0180609506     0.5966135263     0.1576419324    
+  Source acc: 1.000000  |  Target acc: 0.969630
+  Best target acc: 0.978519
+
+======== ROUND 28 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0017715361     0.0017715361    
+1                0.0284066033     0.0284066033    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.7163296938     0.6945623755     0.0243700556     0.0095823081    
+Counter({np.int64(0): 2637, np.int64(2): 2607, np.int64(1): 156})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4064626694     0.0202895012     0.2768675685     0.2186112106    
+  Source acc: 1.000000  |  Target acc: 0.976296
+  Best target acc: 0.978519
+
+======== ROUND 29 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0318195447     0.0318195447    
+1                0.0059690070     0.0059690070    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.8400072455     0.6796529889     0.0973677263     0.1116703525    
+Counter({np.int64(0): 2734, np.int64(2): 1698, np.int64(1): 968})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.7231035233     0.0086147822     0.6242628098     0.1804518104    
+  Source acc: 1.000000  |  Target acc: 0.977037
+  Best target acc: 0.978519
+
+======== ROUND 30 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0012998166     0.0012998166    
+1                0.0026471715     0.0026471715    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.4133846760     1.3078017235     0.1065097451     0.0523280613    
+Counter({np.int64(0): 2723, np.int64(2): 1892, np.int64(1): 785})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.9062882066     0.0439251624     0.7874917388     0.1497425735    
+  Source acc: 1.000000  |  Target acc: 0.971852
+  Best target acc: 0.978519
+
+======== ROUND 31 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.1201228723     0.1201228723    
+1                0.1977002621     0.1977002621    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.8330954909     0.7289684415     0.1315867305     0.0383337401    
+Counter({np.int64(2): 2646, np.int64(0): 2460, np.int64(1): 294})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.3630897403     0.0277843103     0.2689088285     0.1327931881    
+  Source acc: 1.000000  |  Target acc: 0.977037
+  Best target acc: 0.978519
+
+======== ROUND 32 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0031708686     0.0031708686    
+1                0.0054058875     0.0054058875    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1431767941     0.9440140724     0.2432383150     0.0775436014    
+Counter({np.int64(0): 2721, np.int64(2): 1804, np.int64(1): 875})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4507254660     0.0240634233     0.3391829133     0.1749582887    
+  Source acc: 1.000000  |  Target acc: 0.979259
+  Best target acc: 0.979259
+
+======== ROUND 33 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0033054492     0.0033054492    
+1                0.0006194071     0.0006194071    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1017214060     0.9547472000     0.1892922372     0.0523280613    
+Counter({np.int64(0): 2720, np.int64(2): 1814, np.int64(1): 866})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.6284576654     0.0608479790     0.5085358620     0.1181476116    
+  Source acc: 1.000000  |  Target acc: 0.977778
+  Best target acc: 0.979259
+
+======== ROUND 34 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0010675959     0.0010675959    
+1                0.0012286041     0.0012286041    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.9139885306     0.8815748096     0.0263634063     0.0192320347    
+Counter({np.int64(0): 2724, np.int64(2): 1868, np.int64(1): 808})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.3104528785     0.0133401565     0.2056464851     0.1829324961    
+  Source acc: 1.000000  |  Target acc: 0.977037
+  Best target acc: 0.979259
+
+======== ROUND 35 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0007683231     0.0007683231    
+1                0.0013593737     0.0013593737    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.9998239279     0.9449548721     0.0462047607     0.0317666605    
+Counter({np.int64(0): 2672, np.int64(2): 2607, np.int64(1): 121})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.7626359463     0.0230666008     0.6619344950     0.1552697718    
+  Source acc: 1.000000  |  Target acc: 0.980741
+  Best target acc: 0.980741
+
+======== ROUND 36 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0015610302     0.0015610302    
+1                0.0343737118     0.0343737118    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.2416181564     1.0164647102     0.1799792498     0.1351637244    
+Counter({np.int64(2): 2675, np.int64(0): 2426, np.int64(1): 299})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.0130745173     0.0285923388     0.9399594665     0.0890454277    
+  Source acc: 1.000000  |  Target acc: 0.981481
+  Best target acc: 0.981481
+
+======== ROUND 37 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0008598967     0.0008598967    
+1                0.0023177615     0.0023177615    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1398468018     0.9985659719     0.1274744123     0.0775436014    
+Counter({np.int64(0): 2713, np.int64(2): 1882, np.int64(1): 805})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.6503910422     0.0129578821     0.5474280119     0.1800103188    
+  Source acc: 1.000000  |  Target acc: 0.980000
+  Best target acc: 0.981481
+
+======== ROUND 38 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0036448266     0.0036448266    
+1                0.0006635804     0.0006635804    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.2452781200     1.1866378784     0.0851172656     0.0160816163    
+Counter({np.int64(0): 2706, np.int64(2): 2568, np.int64(1): 126})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.8821865320     0.0079084402     0.7757951021     0.1969659328    
+  Source acc: 1.000000  |  Target acc: 0.975556
+  Best target acc: 0.981481
+
+======== ROUND 39 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0010607577     0.0010607577    
+1                0.0319158062     0.0319158062    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.3078713417     1.1655226946     0.0556342006     0.1145315021    
+Counter({np.int64(2): 2688, np.int64(0): 2619, np.int64(1): 93})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4443693459     0.0086737107     0.3600965440     0.1511981934    
+  Source acc: 1.000000  |  Target acc: 0.980000
+  Best target acc: 0.981481
+
+======== ROUND 40 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0105150975     0.0105150975    
+1                0.3060719371     0.3060719371    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.2764570713     1.1317657232     0.0506911576     0.1193457544    
+Counter({np.int64(0): 2706, np.int64(2): 1941, np.int64(1): 753})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4629577398     0.0139666824     0.3791300058     0.1397221088    
+  Source acc: 1.000000  |  Target acc: 0.974815
+  Best target acc: 0.981481
+
+======== ROUND 41 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0299991965     0.0299991965    
+1                0.0005100286     0.0005100286    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.0637935400     0.9989067912     0.0251171645     0.0523280613    
+Counter({np.int64(0): 2705, np.int64(2): 2139, np.int64(1): 556})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4417710304     0.0143864425     0.3726010323     0.1095671281    
+  Source acc: 1.000000  |  Target acc: 0.977778
+  Best target acc: 0.981481
+
+======== ROUND 42 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0006118250     0.0006118250    
+1                0.0426070690     0.0426070690    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1260248423     1.0304616690     0.0947914422     0.0481675006    
+Counter({np.int64(2): 2697, np.int64(0): 2076, np.int64(1): 627})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.0576397181     0.0366934650     0.9245083332     0.1928758472    
+  Source acc: 1.000000  |  Target acc: 0.977778
+  Best target acc: 0.981481
+
+======== ROUND 43 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0148508707     0.0148508707    
+1                0.0052253678     0.0052253678    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.2360605001     1.1482084990     0.1078196764     0.0339421555    
+Counter({np.int64(0): 2665, np.int64(2): 2660, np.int64(1): 75})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.3006430566     0.0122453617     0.2347037047     0.1073880047    
+  Source acc: 1.000000  |  Target acc: 0.979259
+  Best target acc: 0.981481
+
+======== ROUND 44 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0008312987     0.0008312987    
+1                0.0032953441     0.0032953441    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.3368217945     1.2120945454     0.0280122962     0.1107210815    
+Counter({np.int64(2): 2696, np.int64(0): 1987, np.int64(1): 717})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.6962045431     0.0450706743     0.5901612043     0.1219453439    
+  Source acc: 1.000000  |  Target acc: 0.983704
+  Best target acc: 0.983704
+
+======== ROUND 45 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0033057297     0.0033057297    
+1                0.0511215739     0.0511215739    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.2778596878     1.1752665043     0.0899948180     0.0575957373    
+Counter({np.int64(2): 2623, np.int64(0): 2450, np.int64(1): 327})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.3726815581     0.0137542263     0.2917245030     0.1344056427    
+  Source acc: 1.000000  |  Target acc: 0.981481
+  Best target acc: 0.983704
+
+======== ROUND 46 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0010410621     0.0010410621    
+1                0.0043631759     0.0043631759    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.3045326471     1.2174643278     0.0778016746     0.0481675006    
+Counter({np.int64(0): 2700, np.int64(2): 1818, np.int64(1): 882})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                1.2051318884     0.0213306490     1.1098397970     0.1479229182    
+  Source acc: 1.000000  |  Target acc: 0.982222
+  Best target acc: 0.983704
+
+======== ROUND 47 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0004178832     0.0004178832    
+1                0.0002903796     0.0002903796    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.2090563774     1.1605316401     0.0291652437     0.0339421555    
+Counter({np.int64(0): 2703, np.int64(2): 1630, np.int64(1): 1067})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.5089021921     0.0073082880     0.4323188066     0.1385501921    
+  Source acc: 1.000000  |  Target acc: 0.981481
+  Best target acc: 0.983704
+
+======== ROUND 48 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0093888901     0.0093888901    
+1                0.0007082691     0.0007082691    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                1.1148593426     1.0052509308     0.2163647711     0.0014259706    
+Counter({np.int64(0): 2705, np.int64(2): 2219, np.int64(1): 476})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4303769469     0.0338602401     0.3329848051     0.1270638108    
+  Source acc: 1.000000  |  Target acc: 0.974815
+  Best target acc: 0.983704
+
+======== ROUND 49 ========  [Ablation: full]
+==== Stage 1: SupCon Pre-training ====
+epoch            total_loss       cls_loss        
+0                0.0153393857     0.0153393857    
+1                0.0092626037     0.0092626037    
+==== Stage 2: Latent Domain PCL ====
+epoch            total_loss       dis_loss         proto_loss       ent_pen_loss    
+0                0.8613009453     0.7591843605     0.0995771214     0.0523280613    
+Counter({np.int64(0): 2699, np.int64(2): 2123, np.int64(1): 578})
+==== Stage 3: Domain-invariant + HardNCE ====
+epoch            total_loss       cls_loss         dis_loss         hard_loss       
+0                0.4486585557     0.0295177829     0.3605837822     0.1171140075    
+  Source acc: 1.000000  |  Target acc: 0.976296
+  Best target acc: 0.983704
+[ConfMatrix] saved to log/main_widar6ap_cloc_testL2_s1 (cm shape=(6, 6))
+
+Results saved to log/main_widar6ap_cloc_testL2_s1
+acc.txt: log/main_widar6ap_cloc_testL2_s1/acc.txt
+bestacc.txt: log/main_widar6ap_cloc_testL2_s1/bestacc.txt

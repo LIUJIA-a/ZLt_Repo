@@ -55,7 +55,7 @@ def get_args():
                         help="阶段② 原型对比损失权重: disc_loss + lam_pcl * proto_loss")
     parser.add_argument('--lam_ent', type=float, default=0.3,
                         help="阶段② 域分配熵惩罚权重，防止隐式域坍塌")
-    parser.add_argument('--beta', type=float, default=0.3,
+    parser.add_argument('--beta', type=float, default=0.5,
                         help="阶段③ 镜像困难负样本损失权重: cls_loss + disc_loss + beta * hard_contrast_loss")
     parser.add_argument('--variance_percentile', type=float, default=30.0,
                         help="Physical_Mask_Augment: 方差低于此百分位的 patch 被选为掩码候选区")
@@ -103,11 +103,29 @@ def get_args():
                         help="XRF55 cross_env 留一法: 指定测试场景编号如 1,2,3,4")
     parser.add_argument('--label_smoothing', type=float, default=0.0,
                         help="Label smoothing factor for CE loss (0=off, 0.1=typical)")
+    parser.add_argument('--xrf_test_users', type=int, default=None,
+                        help="XRF55 cross_user LOUO: 指定单个测试用户ID(1-30),其余29人训练")
+    parser.add_argument('--seed', type=int, default=None,
+                        help="global random seed for reproducibility / paired runs; "
+                             "None keeps legacy non-deterministic behavior")
+    parser.add_argument('--dir_weight', type=float, default=0.5,
+                        help="direction sensitivity weight for directional gestures "
+                             "(circle=0; others=this value). For R2-2 sensitivity sweep.")
     args = parser.parse_args()
     args = act_param_init(args)
     return args
 
 args = get_args()
+
+# ── 全局随机种子设定（用于配对实验/复现）──────────────────────────────────
+if args.seed is not None:
+    import random as _random
+    _random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.cuda.manual_seed_all(args.seed)
+    print(f'[Seed] global random seed set to {args.seed}')
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 net = GeneFi(args).to(device)
 params = net.parameters()

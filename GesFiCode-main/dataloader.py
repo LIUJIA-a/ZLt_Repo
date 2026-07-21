@@ -50,7 +50,7 @@ class WidarDataset(data.Dataset):
     def __init__(self, data_dir, transform=None,
                  allowed_envs=None, allowed_users=None,
                  allowed_gestures=None, allowed_locs=None,
-                 allowed_oris=None, allowed_rxs=None, gesture_map=None):
+                 allowed_oris=None, allowed_rx=None, gesture_map=None):
         self.transform = transform
         self.img_paths = []
         self.img_labels = []
@@ -62,7 +62,7 @@ class WidarDataset(data.Dataset):
         gest_set = set(allowed_gestures) if allowed_gestures else None
         loc_set = set(allowed_locs) if allowed_locs else None
         ori_set = set(allowed_oris) if allowed_oris else None
-        rx_set = set(allowed_rxs) if allowed_rxs else None
+        rx_set = set(allowed_rx) if allowed_rx else None
 
         # ── 第一遍扫描：收集有效文件，提取 gesture ID 集合 ─────────────────
         valid_files = []          # [(filepath, gesture_str), ...]
